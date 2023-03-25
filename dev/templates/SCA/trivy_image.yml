@@ -1,0 +1,16 @@
+.trivy_image:
+  image:
+    name: maibornwolff/secobserve-scanners:dev
+  stage: test
+  variables:
+    GIT_STRATEGY: none
+    FURTHER_PARAMETERS: ""
+    SO_UPLOAD: "true"
+  script:
+    - /entrypoints/entrypoint_trivy_image.sh
+  interruptible: true
+  allow_failure: true
+  artifacts:
+    when: always
+    paths: 
+      - "$REPORT_NAME"
