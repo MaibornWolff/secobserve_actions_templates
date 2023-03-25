@@ -1,0 +1,29 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:base"
+    ],
+    "baseBranches": [
+        "dev"
+    ],
+    "binarySource": "install",
+    "branchConcurrentLimit": 10,
+    "dependencyDashboard": false,
+    "dependencyDashboardApproval": false,
+    "labels": [
+        "dependencies"
+    ],
+    "lockFileMaintenance": {
+        "enabled": true
+    },
+    "prHourlyLimit": 10,
+    "rebaseWhen": "conflicted",
+    "packageRules": [
+        {
+            "matchPackageNames": [
+                "node"
+            ],
+            "allowedVersions": "<19"
+        }
+    ]
+}

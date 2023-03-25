@@ -1,0 +1,17 @@
+.drheader:
+  image:
+    name: maibornwolff/secobserve-scanners:latest
+  stage: post_deploy
+  variables:
+    GIT_STRATEGY: none
+    FURTHER_PARAMETERS: ""
+    RULES: "/rules.yml"
+    SO_UPLOAD: "true"
+  script:
+    - /entrypoints/entrypoint_drheader.sh
+  interruptible: true
+  allow_failure: true
+  artifacts:
+    when: always
+    paths: 
+      - "$REPORT_NAME"

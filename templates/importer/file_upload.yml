@@ -1,0 +1,9 @@
+.file_upload:
+  image:
+    name: maibornwolff/secobserve-scanners:latest
+  stage: upload
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - file_upload_observations.sh
+  allow_failure: true

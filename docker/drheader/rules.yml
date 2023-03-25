@@ -1,0 +1,68 @@
+Headers:
+    Content-Security-Policy:
+        Required: True
+        Must-Avoid:
+            - unsafe-inline
+            - unsafe-eval
+        Directives:
+            default-src:
+                Required: True
+                Value-One-Of:
+                    - none
+                    - self
+    Cross-Origin-Embedder-Policy:
+        Required: True
+        Value: require-corp
+    Cross-Origin-Opener-Policy:
+        Required: True
+        Value: same-origin
+    Cross-Origin-Resource-Policy:
+        Required: True
+        Value: same-site
+    Pragma:
+        Required: False
+    Referrer-Policy:
+        Required: True
+        Value-One-Of:
+            - strict-origin
+            - strict-origin-when-cross-origin
+            - no-referrer
+            - no-referrer, strict-origin-when-cross-origin
+    Server:
+        Required: Optional
+        Value:
+            - undisclosed
+    Set-Cookie:
+        Required: Optional
+        Must-Contain:
+            - HttpOnly
+            - Secure
+            - SameSite=Strict
+    Strict-Transport-Security:
+        Required: True
+        Value:
+            - max-age=31536000
+            - includeSubDomains
+            - preload
+    User-Agent:
+        Required: False
+    X-AspNet-Version:
+        Required: False
+    X-Client-IP:
+        Required: False
+    X-Content-Type-Options:
+        Required: True
+        Value: nosniff
+    X-Forwarded-For:
+        Required: False
+    X-Frame-Options:
+        Required: True
+        Value-One-Of:
+            - DENY
+            - SAMEORIGIN
+    X-Generator:
+        Required: False
+    X-Powered-By:
+        Required: False
+    X-XSS-Protection:
+        Required: False

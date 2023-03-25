@@ -1,0 +1,20 @@
+# Bandit
+# ----------------------------------------------------------------
+bandit==1.7.4  # https://github.com/PyCQA/bandit
+bandit-sarif-formatter==1.1.1  # https://github.com/microsoft/bandit-sarif-formatter
+
+# Checkov
+# ----------------------------------------------------------------
+checkov==2.2.335  # https://github.com/bridgecrewio/checkov
+
+# Semgrep
+# ----------------------------------------------------------------
+semgrep==1.9.0  # https://github.com/returntocorp/semgrep
+
+# CryptoLyzer
+# ----------------------------------------------------------------
+CryptoLyzer==0.8.4  # https://gitlab.com/coroner/cryptolyzer
+
+# Importer
+# ----------------------------------------------------------------
+requests==2.28.2
