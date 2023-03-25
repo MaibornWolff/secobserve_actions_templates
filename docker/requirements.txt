@@ -9,7 +9,7 @@ checkov==2.2.335  # https://github.com/bridgecrewio/checkov
 
 # Semgrep
 # ----------------------------------------------------------------
-semgrep==1.9.0  # https://github.com/returntocorp/semgrep
+semgrep==1.15.0  # https://github.com/returntocorp/semgrep
 
 # CryptoLyzer
 # ----------------------------------------------------------------
