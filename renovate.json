@@ -4,7 +4,7 @@
         "config:base"
     ],
     "baseBranches": [
-        "dev"
+        "main"
     ],
     "binarySource": "install",
     "branchConcurrentLimit": 10,
