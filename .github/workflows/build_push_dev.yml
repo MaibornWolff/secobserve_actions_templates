@@ -1,4 +1,4 @@
-name: Build and push latest images from main
+name: Build and push dev images
 
 on: workflow_dispatch
 
@@ -10,7 +10,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: main
+          ref: dev
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -30,7 +30,7 @@ jobs:
           context: .
           file: ./docker//Dockerfile
           push: true
-          tags: maibornwolff/secobserve-scanners:latest
+          tags: maibornwolff/secobserve-scanners:dev
       -
         name: Build and push OWASP ZAP
         uses: docker/build-push-action@v4
@@ -38,4 +38,4 @@ jobs:
           context: .
           file: ./docker_zap//Dockerfile
           push: true
-          tags: maibornwolff/secobserve-scanners-zap:latest
+          tags: maibornwolff/secobserve-scanners-zap:dev

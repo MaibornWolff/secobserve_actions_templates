@@ -1,0 +1,16 @@
+.kics:
+  image:
+    name: maibornwolff/secobserve-scanners:dev
+  stage: test
+  variables:
+    FURTHER_PARAMETERS: ""
+    RUN_DIRECTORY: "."
+    SO_UPLOAD: "true"
+  script:
+    - /entrypoints/entrypoint_kics.sh
+  interruptible: true
+  allow_failure: true
+  artifacts:
+    when: always
+    paths: 
+      - "$REPORT_NAME"
