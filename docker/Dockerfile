@@ -72,10 +72,14 @@ RUN apk add --no-cache npm git docker-cli
 WORKDIR /usr/local/importer
 COPY importer/ ./
 
+# Install vulnerability_scanner
+WORKDIR /usr/local/vulnerability_scanner
+COPY vulnerability_scanner/ ./
+
 # Copy entrypoints and set PATH
 WORKDIR /entrypoints
 COPY ./docker/entrypoints/ ./
-ENV PATH="/usr/local/gitleaks:/usr/local/grype:/usr/local/kics/bin:/usr/local/trivy:/usr/local/importer/bin:$PATH"
+ENV PATH="/usr/local/gitleaks:/usr/local/grype:/usr/local/kics/bin:/usr/local/trivy:/usr/local/importer/bin:/usr/local/vulnerability_scanner/bin:$PATH"
 
 WORKDIR /
 
