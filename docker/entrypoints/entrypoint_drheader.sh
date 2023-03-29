@@ -14,6 +14,10 @@ fi
 export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="DrHeader"
 
+if [[ -z "${RULES}" ]]; then
+  export RULES=/rules.yml
+fi
+
 echo ----------------------------------------
 echo DrHeader
 echo - TARGET:             "$TARGET"

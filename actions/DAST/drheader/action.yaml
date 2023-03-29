@@ -13,7 +13,6 @@ inputs:
   rules:
     description: 'Custom rules to be used with DrHeader.'
     required: false
-    default: '/rules.yml'
   further_parameters:
     description: 'Further parameters to be given to the scanner.'
     required: false
