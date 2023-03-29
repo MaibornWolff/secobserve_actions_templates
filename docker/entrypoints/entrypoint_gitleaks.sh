@@ -14,6 +14,15 @@ fi
 export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="Sarif"
 
+echo ----------------------------------------
+echo GitLeaks
+echo - TARGET:             "$TARGET"
+echo - REPORT_NAME:        "$REPORT_NAME"
+echo - RUN_DIRECTORY:      "$RUN_DIRECTORY"
+if [[ -n "$FURTHER_PARAMETERS" ]]; then
+  echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
+fi
+
 git config --global --add safe.directory "$WORKSPACE"
 cd "$RUN_DIRECTORY"
 gitleaks detect $FURTHER_PARAMETERS --log-level warn --exit-code 0 --no-git --redact --report-format sarif --report-path "$WORKSPACE/$REPORT_NAME"

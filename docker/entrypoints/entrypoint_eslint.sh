@@ -14,6 +14,15 @@ fi
 export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="Sarif"
 
+echo ----------------------------------------
+echo ESLint
+echo - TARGET:             "$TARGET"
+echo - REPORT_NAME:        "$REPORT_NAME"
+echo - RUN_DIRECTORY:      "$RUN_DIRECTORY"
+if [[ -n "$FURTHER_PARAMETERS" ]]; then
+  echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
+fi
+
 cd "$RUN_DIRECTORY"
 npm install
 npx eslint $FURTHER_PARAMETERS --quiet --ignore-pattern ./node_modules/ --format @microsoft/eslint-formatter-sarif --output-file "$WORKSPACE/$REPORT_NAME" "$TARGET"
