@@ -14,6 +14,15 @@ fi
 export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="OWASP ZAP"
 
+echo ----------------------------------------
+echo OWASP ZAP
+echo - TARGET:             "$TARGET"
+echo - REPORT_NAME:        "$REPORT_NAME"
+echo - SCRIPT:             "$SCRIPT"
+if [[ -n "$FURTHER_PARAMETERS" ]]; then
+  echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
+fi
+
 cd "$WORKSPACE"
 mkdir /zap/wrk
 /zap/$SCRIPT -t "$TARGET" $FURTHER_PARAMETERS -J "$REPORT_NAME" || true

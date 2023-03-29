@@ -27,16 +27,17 @@ class Environment:
         if len(error_string) > 0:
             raise Exception(error_string)
 
-        print("SO_API_BASE_URL:                 ", self.api_base_url)
-        print("SO_PRODUCT_NAME:                 ", self.product_name)
-        print("SO_FILE_NAME:                    ", self.file_name)
-        print("SO_PARSER_NAME:                  ", self.parser_name)
+        print("SecObserve Importer")
+        print("- SO_API_BASE_URL:                 ", self.api_base_url)
+        print("- SO_PRODUCT_NAME:                 ", self.product_name)
+        print("- SO_FILE_NAME:                    ", self.file_name)
+        print("- SO_PARSER_NAME:                  ", self.parser_name)
         if self.service:
-            print("SO_ORIGIN_SERVICE:               ", self.service)
+            print("- SO_ORIGIN_SERVICE:               ", self.service)
         if self.docker_image_name_tag:
-            print("SO_ORIGIN_DOCKER_IMAGE_NAME_TAG: ", self.docker_image_name_tag)
+            print("- SO_ORIGIN_DOCKER_IMAGE_NAME_TAG: ", self.docker_image_name_tag)
         if self.endpoint_url:
-            print("SO_ORIGIN_ENDPOINT_URL:          ", self.endpoint_url)
+            print("- SO_ORIGIN_ENDPOINT_URL:          ", self.endpoint_url)
         print("")
 
     def check_environment_common(self):

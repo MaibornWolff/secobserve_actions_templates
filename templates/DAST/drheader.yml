@@ -5,7 +5,6 @@
   variables:
     GIT_STRATEGY: none
     FURTHER_PARAMETERS: ""
-    RULES: "/rules.yml"
     SO_UPLOAD: "true"
   script:
     - /entrypoints/entrypoint_drheader.sh

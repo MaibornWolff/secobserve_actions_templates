@@ -14,9 +14,17 @@ fi
 export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="CycloneDX"
 
+echo ----------------------------------------
+echo Grype Image
+echo - TARGET:             "$TARGET"
+echo - REPORT_NAME:        "$REPORT_NAME"
+if [[ -n "$FURTHER_PARAMETERS" ]]; then
+  echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
+fi
+
 cd "$WORKSPACE"
-docker pull "$TARGET"
-grype docker:"$TARGET" $FURTHER_PARAMETERS --output cyclonedx-json --file "$REPORT_NAME"
+docker pull --quiet "$TARGET"
+grype docker:"$TARGET" $FURTHER_PARAMETERS --quiet --output cyclonedx-json --file "$REPORT_NAME"
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh
