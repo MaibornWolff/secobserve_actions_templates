@@ -15,7 +15,7 @@ export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="CycloneDX"
 
 cd "$WORKSPACE"
-docker pull "$TARGET"
+docker pull --quiet "$TARGET"
 grype docker:"$TARGET" $FURTHER_PARAMETERS --quiet --output cyclonedx-json --file "$REPORT_NAME"
 
 if [ "$SO_UPLOAD" == "true" ]; then

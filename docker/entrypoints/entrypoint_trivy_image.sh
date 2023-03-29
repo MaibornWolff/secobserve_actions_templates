@@ -17,7 +17,7 @@ export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="CycloneDX"
 
 cd "$WORKSPACE"
-docker pull "$TARGET"
+docker pull --quiet "$TARGET"
 trivy image $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --security-checks vuln --output "$REPORT_NAME" "$TARGET"
 
 if [ "$SO_UPLOAD" == "true" ]; then

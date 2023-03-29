@@ -16,7 +16,7 @@ export SO_PARSER_NAME="Sarif"
 
 cd "$RUN_DIRECTORY"
 npm install
-npx eslint $FURTHER_PARAMETERS --ignore-pattern ./node_modules/ --format @microsoft/eslint-formatter-sarif --output-file "$WORKSPACE/$REPORT_NAME" "$TARGET"
+npx eslint $FURTHER_PARAMETERS --quiet --ignore-pattern ./node_modules/ --format @microsoft/eslint-formatter-sarif --output-file "$WORKSPACE/$REPORT_NAME" "$TARGET"
 cd "$WORKSPACE"
 
 # The source files are referenced with "file://absolute_path", but we want to have relative paths,
