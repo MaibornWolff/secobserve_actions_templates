@@ -17,7 +17,7 @@ export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="CycloneDX"
 
 cd "$RUN_DIRECTORY"
-trivy filesystem $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --security-checks vuln --output "$WORKSPACE/$REPORT_NAME" "$TARGET"
+trivy filesystem $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --scanners vuln --output "$WORKSPACE/$REPORT_NAME" "$TARGET"
 cd "$WORKSPACE"
 
 if [ "$SO_UPLOAD" == "true" ]; then
