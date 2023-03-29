@@ -15,7 +15,7 @@ export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="Sarif"
 
 cd "$RUN_DIRECTORY"
-bandit $FURTHER_PARAMETERS --format sarif --output "$WORKSPACE/$REPORT_NAME" --exit-zero --recursive "$TARGET"
+bandit $FURTHER_PARAMETERS --quiet --format sarif --output "$WORKSPACE/$REPORT_NAME" --exit-zero --recursive "$TARGET"
 cd "$WORKSPACE"
 
 if [ "$SO_UPLOAD" == "true" ]; then

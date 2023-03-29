@@ -15,7 +15,7 @@ export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="Sarif"
 
 cd "$RUN_DIRECTORY"
-semgrep scan $FURTHER_PARAMETERS --config $CONFIGURATION --metrics off --no-error --output "$WORKSPACE/$REPORT_NAME" --sarif "$TARGET"
+semgrep scan $FURTHER_PARAMETERS --config $CONFIGURATION --quiet --metrics off --no-error --output "$WORKSPACE/$REPORT_NAME" --sarif "$TARGET"
 cd "$WORKSPACE"
 
 if [ "$SO_UPLOAD" == "true" ]; then

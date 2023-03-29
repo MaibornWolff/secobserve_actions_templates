@@ -16,7 +16,7 @@ export SO_PARSER_NAME="CycloneDX"
 
 cd "$WORKSPACE"
 docker pull "$TARGET"
-grype docker:"$TARGET" $FURTHER_PARAMETERS --output cyclonedx-json --file "$REPORT_NAME"
+grype docker:"$TARGET" $FURTHER_PARAMETERS --quiet --output cyclonedx-json --file "$REPORT_NAME"
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh

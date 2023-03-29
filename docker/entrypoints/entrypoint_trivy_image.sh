@@ -18,7 +18,7 @@ export SO_PARSER_NAME="CycloneDX"
 
 cd "$WORKSPACE"
 docker pull "$TARGET"
-trivy image $FURTHER_PARAMETERS --exit-code 0 --format cyclonedx --security-checks vuln --output "$REPORT_NAME" "$TARGET"
+trivy image $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --security-checks vuln --output "$REPORT_NAME" "$TARGET"
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh
