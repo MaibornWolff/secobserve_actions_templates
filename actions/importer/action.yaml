@@ -35,7 +35,7 @@ inputs:
 runs:
   using: 'docker'
   image: 'docker://maibornwolff/secobserve-scanners:latest'
-  entrypoint: '/usr/local/importer/bin/file_upload_observations.sh'
+  entrypoint: 'file_upload_observations.sh'
   env:
     SO_UPLOAD: ${{ inputs.so_upload }}
     SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
