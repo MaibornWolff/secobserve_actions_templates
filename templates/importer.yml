@@ -1,4 +1,4 @@
-.file_upload:
+.importer:
   image:
     name: maibornwolff/secobserve-scanners:latest
   stage: upload
