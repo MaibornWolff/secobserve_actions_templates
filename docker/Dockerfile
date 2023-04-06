@@ -12,7 +12,7 @@ RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 # Go build stage for KICS
 FROM golang:1.20.3-alpine as go-build-stage
 
-ARG KICS_VERSION=1.6.12
+ARG KICS_VERSION=1.6.13
 
 # Install kics from GitHub
 WORKDIR /usr/local/kics
@@ -24,10 +24,10 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
 # Python run stage
 FROM python:3.11.3-alpine as python-run-stage
 
-ARG GITLEAKS_VERSION=8.16.1
-ARG GRYPE_VERSION=0.59.1
-ARG KICS_VERSION=1.6.12
-ARG TRIVY_VERSION=0.38.3
+ARG GITLEAKS_VERSION=8.16.2
+ARG GRYPE_VERSION=0.61.0
+ARG KICS_VERSION=1.6.13
+ARG TRIVY_VERSION=0.39.0
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
 RUN apk add --no-cache openssl-dev
