@@ -1,5 +1,5 @@
 # Python run stage
-FROM owasp/zap2docker-stable
+FROM owasp/zap2docker-stable:2.12.0
 
 # Install importer
 COPY importer/ /usr/local/importer/
