@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir -r /usr/local/importer/requirements.txt
 # Copy entrypoints and set PATH
 WORKDIR /entrypoints
 COPY ./docker_zap/entrypoints/ ./
+RUN mkdir /zap/wrk
 ENV PATH="/usr/local/importer/bin:$PATH"
 
-WORKDIR /
+WORKDIR /zap
