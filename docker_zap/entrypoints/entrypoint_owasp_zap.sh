@@ -23,9 +23,9 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
+cd /zap
+$SCRIPT -t "$TARGET" $FURTHER_PARAMETERS -J "$REPORT_NAME" || true
 cd "$WORKSPACE"
-mkdir /zap/wrk
-/zap/$SCRIPT -t "$TARGET" $FURTHER_PARAMETERS -J "$REPORT_NAME" || true
 cp /zap/wrk/"$REPORT_NAME" .
 
 if [ "$SO_UPLOAD" == "true" ]; then
