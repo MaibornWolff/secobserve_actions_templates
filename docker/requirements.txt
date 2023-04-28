@@ -5,11 +5,11 @@ bandit-sarif-formatter==1.1.1  # https://github.com/microsoft/bandit-sarif-forma
 
 # Checkov
 # ----------------------------------------------------------------
-checkov==2.3.171  # https://github.com/bridgecrewio/checkov
+checkov==2.3.205  # https://github.com/bridgecrewio/checkov
 
 # Semgrep
 # ----------------------------------------------------------------
-semgrep==1.18.0  # https://github.com/returntocorp/semgrep
+semgrep==1.19.0  # https://github.com/returntocorp/semgrep
 
 # CryptoLyzer
 # ----------------------------------------------------------------
@@ -17,4 +17,4 @@ CryptoLyzer==0.8.5  # https://gitlab.com/coroner/cryptolyzer
 
 # Importer
 # ----------------------------------------------------------------
-requests==2.28.2
+requests==2.29.0
