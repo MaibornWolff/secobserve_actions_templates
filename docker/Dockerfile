@@ -2,7 +2,7 @@
 FROM python:3.11.3-alpine as python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
-RUN apk add --no-cache gcc
+RUN apk add --no-cache gcc musl-dev python3-dev
 
 # Generate wheels for Python packages
 WORKDIR /usr/local
