@@ -13,7 +13,7 @@ semgrep==1.23.0  # https://github.com/returntocorp/semgrep
 
 # CryptoLyzer
 # ----------------------------------------------------------------
-CryptoLyzer==0.8.5  # https://gitlab.com/coroner/cryptolyzer
+CryptoLyzer==0.9.0  # https://gitlab.com/coroner/cryptolyzer
 
 # Importer
 # ----------------------------------------------------------------
