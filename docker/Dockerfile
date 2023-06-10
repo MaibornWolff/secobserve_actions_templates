@@ -24,10 +24,10 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
 # Python run stage
 FROM python:3.11.4-alpine as python-run-stage
 
-ARG GITLEAKS_VERSION=8.16.3
-ARG GRYPE_VERSION=0.62.2
+ARG GITLEAKS_VERSION=8.16.4
+ARG GRYPE_VERSION=0.62.3
 ARG KICS_VERSION=1.7.1
-ARG TRIVY_VERSION=0.41.0
+ARG TRIVY_VERSION=0.42.1
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
 RUN apk add --no-cache openssl-dev
