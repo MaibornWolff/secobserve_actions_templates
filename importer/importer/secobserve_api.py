@@ -27,6 +27,8 @@ class Api:
             "product_name": self.environment.product_name,
             "parser_name": self.environment.parser_name,
         }
+        if self.environment.branch_name is not None:
+            payload["branch_name"] = self.environment.branch_name
         if self.environment.service is not None:
             payload["service"] = self.environment.service
         if self.environment.docker_image_name_tag is not None:

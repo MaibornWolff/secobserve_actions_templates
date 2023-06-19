@@ -1,8 +1,8 @@
 # Python build stage
-FROM python:3.11.3-alpine as python-build-stage
+FROM python:3.11.4-alpine as python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
-RUN apk add --no-cache gcc
+RUN apk add --no-cache gcc musl-dev python3-dev
 
 # Generate wheels for Python packages
 WORKDIR /usr/local
@@ -10,9 +10,9 @@ COPY docker/requirements.txt .
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 
 # Go build stage for KICS
-FROM golang:1.20.3-alpine as go-build-stage
+FROM golang:1.20.5-alpine as go-build-stage
 
-ARG KICS_VERSION=1.6.14
+ARG KICS_VERSION=1.7.1
 
 # Install kics from GitHub
 WORKDIR /usr/local/kics
@@ -22,12 +22,12 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
     && go build -o ./bin/kics cmd/console/main.go
 
 # Python run stage
-FROM python:3.11.3-alpine as python-run-stage
+FROM python:3.11.4-alpine as python-run-stage
 
-ARG GITLEAKS_VERSION=8.16.3
-ARG GRYPE_VERSION=0.61.1
-ARG KICS_VERSION=1.6.14
-ARG TRIVY_VERSION=0.41.0
+ARG GITLEAKS_VERSION=8.16.4
+ARG GRYPE_VERSION=0.62.3
+ARG KICS_VERSION=1.7.1
+ARG TRIVY_VERSION=0.42.1
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
 RUN apk add --no-cache openssl-dev

@@ -6,6 +6,7 @@ class Environment:
         self.api_base_url = os.getenv("SO_API_BASE_URL")
         self.api_token = os.getenv("SO_API_TOKEN")
         self.product_name = os.getenv("SO_PRODUCT_NAME")
+        self.branch_name = os.getenv("SO_BRANCH_NAME", None)
         self.file_name = os.getenv("SO_FILE_NAME", None)
         self.parser_name = os.getenv("SO_PARSER_NAME", None)
         self.api_configuration_name = os.getenv("SO_API_CONFIGURATION_NAME", None)
@@ -30,6 +31,8 @@ class Environment:
         print("SecObserve Importer")
         print("- SO_API_BASE_URL:                 ", self.api_base_url)
         print("- SO_PRODUCT_NAME:                 ", self.product_name)
+        if self.branch_name:
+            print("- SO_BRANCH_NAME:                  ", self.branch_name)
         print("- SO_FILE_NAME:                    ", self.file_name)
         print("- SO_PARSER_NAME:                  ", self.parser_name)
         if self.service:
