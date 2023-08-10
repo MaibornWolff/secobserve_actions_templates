@@ -5,7 +5,7 @@ bandit-sarif-formatter==1.1.1  # https://github.com/microsoft/bandit-sarif-forma
 
 # Checkov
 # ----------------------------------------------------------------
-checkov==2.3.347  # https://github.com/bridgecrewio/checkov
+checkov==2.3.361  # https://github.com/bridgecrewio/checkov
 
 # Semgrep
 # ----------------------------------------------------------------
