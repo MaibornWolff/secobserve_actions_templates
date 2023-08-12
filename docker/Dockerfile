@@ -28,9 +28,10 @@ ARG GITLEAKS_VERSION=8.17.0
 ARG GRYPE_VERSION=0.64.2
 ARG KICS_VERSION=1.7.4
 ARG TRIVY_VERSION=0.43.1
+ARG TFSEC_VERSION=1.28.1
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
-RUN apk add --no-cache openssl-dev
+RUN apk add --no-cache openssl-dev curl bash
 
 # All absolute dir copies ignore workdir instruction. All relative dir copies are wrt to the workdir instruction
 # copy python dependency wheels from python-build-stage
@@ -63,6 +64,10 @@ COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/assets/queries .
 WORKDIR /usr/local/trivy
 RUN wget --no-verbose https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz -O - | tar -zxf -
 
+# Install tfsec from GitHub
+WORKDIR /usr/local/tfsec
+RUN wget https://github.com/aquasecurity/tfsec/releases/download/v${TFSEC_VERSION}/tfsec-linux-amd64 && chmod ugo+x ./tfsec-linux-amd64 && mv ./tfsec-linux-amd64 ./tfsec
+
 # eslint needs npm
 # gitleaks needs git
 # trivy needs docker
@@ -79,7 +84,7 @@ COPY vulnerability_scanner/ ./
 # Copy entrypoints and set PATH
 WORKDIR /entrypoints
 COPY ./docker/entrypoints/ ./
-ENV PATH="/usr/local/gitleaks:/usr/local/grype:/usr/local/kics/bin:/usr/local/trivy:/usr/local/importer/bin:/usr/local/vulnerability_scanner/bin:$PATH"
+ENV PATH="/usr/local/gitleaks:/usr/local/grype:/usr/local/kics/bin:/usr/local/trivy:/usr/local/tfsec:/usr/local/importer/bin:/usr/local/vulnerability_scanner/bin:$PATH"
 
 WORKDIR /
 

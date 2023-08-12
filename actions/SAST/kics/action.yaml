@@ -1,5 +1,5 @@
-name: 'SecObserve Semgrep'
-description: 'Scans infrastructure code for vulnerabilities with Semgrep'
+name: 'SecObserve KICS'
+description: 'Scans infrastructure code for vulnerabilities with KICS'
 author: 'MaibornWolff'
 
 inputs:
