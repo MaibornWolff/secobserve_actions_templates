@@ -31,7 +31,7 @@ ARG TRIVY_VERSION=0.43.1
 ARG TFSEC_VERSION=1.28.1
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
-RUN apk add --no-cache openssl-dev curl bash
+RUN apk add --no-cache openssl-dev
 
 # All absolute dir copies ignore workdir instruction. All relative dir copies are wrt to the workdir instruction
 # copy python dependency wheels from python-build-stage
