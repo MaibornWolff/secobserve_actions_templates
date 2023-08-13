@@ -1,5 +1,5 @@
-name: 'SecObserve KICS'
-description: 'Scans infrastructure code for vulnerabilities with KICS'
+name: 'SecObserve tfsec'
+description: 'Scans infrastructure code for vulnerabilities with tfsec'
 author: 'MaibornWolff'
 
 inputs:
@@ -44,7 +44,7 @@ inputs:
 runs:
   using: 'docker'
   image: 'docker://maibornwolff/secobserve-scanners:dev'
-  entrypoint: '/entrypoints/entrypoint_kics.sh'
+  entrypoint: '/entrypoints/entrypoint_tfsec.sh'
   env:
     TARGET: ${{ inputs.target }}
     REPORT_NAME: ${{ inputs.report_name }}
