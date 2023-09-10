@@ -10,7 +10,7 @@ COPY docker/requirements.txt .
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 
 # Go build stage for KICS
-FROM golang:1.21.0-alpine as go-build-stage
+FROM golang:1.21.1-alpine as go-build-stage
 
 ARG KICS_VERSION=1.7.5
 
