@@ -1,6 +1,13 @@
-name: Build and push latest images from main
+name: Build and push release images from main
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'SecObserve scanners release (without the v)'
+        required: true
+
+permissions: read-all
 
 jobs:
   docker:
@@ -10,7 +17,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: 'v${{ github.event.inputs.release }}'
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -30,7 +37,11 @@ jobs:
           context: .
           file: ./docker//Dockerfile
           push: true
-          tags: maibornwolff/secobserve-scanners:latest
+          tags: |
+            maibornwolff/secobserve-scanners:${{ github.event.inputs.release }}
+            maibornwolff/secobserve-scanners:latest
+          build-args:
+            VERSION=${{ github.event.inputs.release }}
       -
         name: Build and push OWASP ZAP
         uses: docker/build-push-action@v4
@@ -38,4 +49,8 @@ jobs:
           context: .
           file: ./docker_zap//Dockerfile
           push: true
-          tags: maibornwolff/secobserve-scanners-zap:latest
+          tags: |
+            maibornwolff/secobserve-scanners-zap:${{ github.event.inputs.release }}
+            maibornwolff/secobserve-scanners-zap:latest
+          build-args:
+            VERSION=${{ github.event.inputs.release }}
