@@ -59,6 +59,7 @@ RUN wget --no-verbose https://github.com/anchore/grype/releases/download/v${GRYP
 WORKDIR /usr/local/kics
 COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/bin ./bin/
 COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/assets/queries ./queries/
+COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/assets/utils ./utils/
 
 # Install trivy from GitHub
 WORKDIR /usr/local/trivy
