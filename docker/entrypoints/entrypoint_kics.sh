@@ -24,7 +24,7 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
 fi
 
 cd "$RUN_DIRECTORY"
-kics scan $FURTHER_PARAMETERS --silent --no-progress --ignore-on-exit results --queries-path /usr/local/kics/queries --path "$TARGET" --report-formats sarif --output-path "$WORKSPACE" --output-name "$REPORT_NAME"
+kics scan $FURTHER_PARAMETERS --silent --no-progress --ignore-on-exit results --path "$TARGET" --report-formats sarif --output-path "$WORKSPACE" --output-name "$REPORT_NAME"
 cd "$WORKSPACE"
 
 if [ "$SO_UPLOAD" == "true" ]; then
