@@ -12,7 +12,7 @@ RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 # Go build stage for KICS
 FROM golang:1.21.2-alpine as go-build-stage
 
-ARG KICS_VERSION=1.7.9
+ARG KICS_VERSION=1.7.10
 
 # Install kics from GitHub
 WORKDIR /usr/local/kics
@@ -25,9 +25,9 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
 FROM python:3.11.5-alpine as python-run-stage
 
 ARG GITLEAKS_VERSION=8.18.0
-ARG GRYPE_VERSION=0.69.1
-ARG KICS_VERSION=1.7.9
-ARG TRIVY_VERSION=0.45.1
+ARG GRYPE_VERSION=0.71.0
+ARG KICS_VERSION=1.7.10
+ARG TRIVY_VERSION=0.46.0
 ARG TFSEC_VERSION=1.28.4
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
@@ -49,7 +49,7 @@ RUN pip install --no-cache-dir ./drheader-1.7.0-py2.py3-none-any.whl
 
 # install GitLeaks from Github
 WORKDIR /usr/local/gitleaks
-RUN wget --no-verbose https://github.com/zricethezav/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz -O - | tar -zxf -
+RUN wget --no-verbose https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz -O - | tar -zxf -
 
 # install Grype from Github
 WORKDIR /usr/local/grype
