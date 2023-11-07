@@ -1,0 +1,60 @@
+name: 'SecObserve Trivy config'
+description: 'Scans infrastructure code for vulnerabilities with Trivy'
+author: 'MaibornWolff'
+
+inputs:
+  target:
+    description: 'The target to be scanned, here a path of the filesystem.'
+    required: true
+    default: '.'
+  report_name:
+    description: 'The name of the report to be written.'
+    required: true
+  run_directory:
+    description: 'The directory where to run the scanner.'
+    required: false
+    default: '.'
+  further_parameters:
+    description: 'Further parameters to be given to the scanner.'
+    required: false
+    default: ''
+  so_upload:
+    description: 'No upload of observations into SecObserve if value is not "true", default is "true".'
+    required: false
+    default: 'true'
+  so_api_base_url:
+    description: 'Base URL of the SecObserve backend'
+    required: true
+  so_api_token:
+    description: 'API token of the user to be used for the import.'
+    required: true
+  so_product_name:
+    description: 'Name of the product which observations are imported. The product has to exist before starting the import.'
+    required: true
+  so_origin_service:
+    description: 'Service name to be set for all imported observations.'
+    required: false
+  so_origin_docker_image_name_tag:
+    description: 'Name:Tag of Docker image to be set for all imported observations.'
+    required: false
+  so_origin_endpoint_url:
+    description: 'URL of endpoint to be set for all imported observations.'
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'docker://maibornwolff/secobserve-scanners:latest'
+  entrypoint: '/entrypoints/entrypoint_trivy_config.sh'
+  env:
+    TARGET: ${{ inputs.target }}
+    REPORT_NAME: ${{ inputs.report_name }}
+    RUN_DIRECTORY: ${{ inputs.run_directory }}
+    FURTHER_PARAMETERS: ${{ inputs.further_parameters }}
+    SO_UPLOAD: ${{ inputs.so_upload }}
+    SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
+    SO_API_TOKEN: ${{ inputs.so_api_token }}
+    SO_PRODUCT_NAME: ${{ inputs.so_product_name }}
+    SO_BRANCH_NAME: ${{ inputs.so_branch_name }}
+    SO_ORIGIN_SERVICE: ${{ inputs.so_origin_service }}
+    SO_ORIGIN_DOCKER_IMAGE_NAME_TAG: ${{ inputs.so_origin_docker_image_name_tag }}
+    SO_ORIGIN_ENDPOINT_URL: ${{ inputs.so_origin_endpoint_url }}
