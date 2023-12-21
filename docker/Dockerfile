@@ -10,9 +10,9 @@ COPY docker/requirements.txt .
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 
 # Go build stage for KICS
-FROM golang:1.21.4-alpine as go-build-stage
+FROM golang:1.21.5-alpine as go-build-stage
 
-ARG KICS_VERSION=1.7.10
+ARG KICS_VERSION=1.7.12
 
 # Install kics from GitHub
 WORKDIR /usr/local/kics
@@ -25,9 +25,9 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
 FROM python:3.11.5-alpine as python-run-stage
 
 ARG GITLEAKS_VERSION=8.18.1
-ARG GRYPE_VERSION=0.73.3
-ARG KICS_VERSION=1.7.10
-ARG TRIVY_VERSION=0.47.0
+ARG GRYPE_VERSION=0.73.4
+ARG KICS_VERSION=1.7.12
+ARG TRIVY_VERSION=0.48.1
 ARG TFSEC_VERSION=1.28.4
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
@@ -60,7 +60,6 @@ WORKDIR /usr/local/kics
 COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/bin ./bin/
 COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/assets/queries ./bin/assets/queries/
 COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/assets/libraries ./bin/assets/libraries/
-COPY --from=go-build-stage /usr/local/kics/kics-${KICS_VERSION}/assets/utils ./bin/assets/utils/
 
 # Install trivy from GitHub
 WORKDIR /usr/local/trivy
