@@ -12,10 +12,10 @@ else
 fi
 
 export SO_FILE_NAME="${REPORT_NAME}"
-export SO_PARSER_NAME="OWASP ZAP"
+export SO_PARSER_NAME="ZAP"
 
 echo ----------------------------------------
-echo OWASP ZAP
+echo ZAP
 echo - TARGET:             "$TARGET"
 echo - REPORT_NAME:        "$REPORT_NAME"
 echo - SCRIPT:             "$SCRIPT"

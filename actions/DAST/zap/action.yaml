@@ -1,5 +1,5 @@
-name: 'SecObserve OWASP ZAP'
-description: 'Scans web sites and APIs with OWASP ZAP'
+name: 'SecObserve ZAP'
+description: 'Scans web sites and APIs with ZAP'
 author: 'MaibornWolff'
 
 inputs:
@@ -44,7 +44,7 @@ inputs:
 runs:
   using: 'docker'
   image: 'docker://maibornwolff/secobserve-scanners-zap:latest'
-  entrypoint: '/entrypoints/entrypoint_owasp_zap.sh'
+  entrypoint: '/entrypoints/entrypoint_zap.sh'
   env:
     TARGET: ${{ inputs.target }}
     REPORT_NAME: ${{ inputs.report_name }}
