@@ -32,7 +32,7 @@ jobs:
           push: true
           tags: maibornwolff/secobserve-scanners:dev
       -
-        name: Build and push OWASP ZAP
+        name: Build and push ZAP
         uses: docker/build-push-action@v5
         with:
           context: .
