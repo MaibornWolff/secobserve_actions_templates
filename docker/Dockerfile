@@ -1,5 +1,5 @@
 # Python build stage
-FROM python:3.11.5-alpine as python-build-stage
+FROM python:3.12.1-alpine as python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
 RUN apk add --no-cache gcc musl-dev python3-dev
@@ -22,7 +22,7 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
     && go build -o ./bin/kics cmd/console/main.go
 
 # Python run stage
-FROM python:3.11.5-alpine as python-run-stage
+FROM python:3.12.1-alpine as python-run-stage
 
 ARG GITLEAKS_VERSION=8.18.1
 ARG GRYPE_VERSION=0.73.4
@@ -41,7 +41,7 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 	&& rm -rf /wheels/ && rm -rf /tmp
 
 # Hack because Python's find_library doesn't work on Alpine
-RUN sed -i -e "s|get_library('crypto', 'libcrypto\.dylib', '42')|'/usr/lib/libcrypto\.so'|g" /usr/local/lib/python3.11/site-packages/oscrypto/_openssl/_libcrypto_cffi.py
+RUN sed -i -e "s|get_library('crypto', 'libcrypto\.dylib', '42')|'/usr/lib/libcrypto\.so'|g" /usr/local/lib/python3.12/site-packages/oscrypto/_openssl/_libcrypto_cffi.py
 
 # copy and install precompiled DrHeader library and rules
 COPY docker/drheader/drheader-1.7.0-py2.py3-none-any.whl docker/drheader/rules.yml ./
