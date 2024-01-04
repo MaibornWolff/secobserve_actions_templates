@@ -27,7 +27,7 @@ FROM python:3.12.1-alpine as python-run-stage
 ARG GITLEAKS_VERSION=8.18.1
 ARG GRYPE_VERSION=0.73.5
 ARG KICS_VERSION=1.7.12
-ARG TRIVY_VERSION=0.48.1
+ARG TRIVY_VERSION=0.48.2
 ARG TFSEC_VERSION=1.28.4
 
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
