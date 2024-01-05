@@ -1,4 +1,4 @@
-.owasp_zap:
+.zap:
   image:
     name: maibornwolff/secobserve-scanners-zap:latest
   stage: post_deploy
@@ -8,7 +8,7 @@
     SCRIPT: "zap-baseline.py"
     SO_UPLOAD: "true"
   script:
-    - /entrypoints/entrypoint_owasp_zap.sh
+    - /entrypoints/entrypoint_zap.sh
   interruptible: true
   allow_failure: true
   artifacts:
