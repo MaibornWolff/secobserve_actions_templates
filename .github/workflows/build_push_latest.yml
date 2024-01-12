@@ -31,6 +31,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Set current date as env variable
+        run: echo "CREATED=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      -
         name: Build and push scanners
         uses: docker/build-push-action@v5
         with:
@@ -40,7 +43,9 @@ jobs:
           tags: |
             maibornwolff/secobserve-scanners:${{ github.event.inputs.release }}
             maibornwolff/secobserve-scanners:latest
-          build-args:
+          build-args: |
+            CREATED=${{ env.CREATED }}
+            REVISION=${{ github.sha }}
             VERSION=${{ github.event.inputs.release }}
       -
         name: Build and push ZAP
@@ -52,5 +57,7 @@ jobs:
           tags: |
             maibornwolff/secobserve-scanners-zap:${{ github.event.inputs.release }}
             maibornwolff/secobserve-scanners-zap:latest
-          build-args:
+          build-args: |
+            CREATED=${{ env.CREATED }}
+            REVISION=${{ github.sha }}
             VERSION=${{ github.event.inputs.release }}
