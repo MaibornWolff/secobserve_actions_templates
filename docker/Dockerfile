@@ -30,6 +30,22 @@ ARG KICS_VERSION=1.7.12
 ARG TRIVY_VERSION=0.48.2
 ARG TFSEC_VERSION=1.28.4
 
+ARG CREATED
+ARG REVISION
+ARG VERSION
+
+LABEL org.opencontainers.image.authors="stefan.fleckenstein@maibornwolff.de"
+LABEL org.opencontainers.image.created=${CREATED}
+LABEL org.opencontainers.image.description="SecObserve is an open source vulnerability management system for software development teams."
+LABEL org.opencontainers.image.documentation="https://maibornwolff.github.io/SecObserve/integrations/github_actions_and_templates/"
+LABEL org.opencontainers.image.licenses="BSD3-Clause"
+LABEL org.opencontainers.image.revision=${REVISION}
+LABEL org.opencontainers.image.source="https://github.com/MaibornWolff/secobserve_actions_templates"
+LABEL org.opencontainers.image.title="SecObserve vulnerability scanners"
+LABEL org.opencontainers.image.url="https://github.com/MaibornWolff/secobserve_actions_templates"
+LABEL org.opencontainers.image.vendor="MaibornWolff GmbH"
+LABEL org.opencontainers.image.version=${VERSION}
+
 # Install openssl-dev because libcrypto is needed for CryptoLyzer
 RUN apk add --no-cache openssl-dev
 
