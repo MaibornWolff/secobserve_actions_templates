@@ -18,6 +18,10 @@ inputs:
     description: 'Further parameters to be given to the scanner.'
     required: false
     default: ''
+  output_path:
+    description: 'Output path for the KICS scan results.'
+    required: true
+    default: ''
   so_upload:
     description: 'No upload of observations into SecObserve if value is not "true", default is "true".'
     required: false
@@ -53,6 +57,7 @@ runs:
     REPORT_NAME: ${{ inputs.report_name }}
     RUN_DIRECTORY: ${{ inputs.run_directory }}
     FURTHER_PARAMETERS: ${{ inputs.further_parameters }}
+    OUTPUT_PATH: ${{ inputs.output_path }}
     SO_UPLOAD: ${{ inputs.so_upload }}
     SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
     SO_API_TOKEN: ${{ inputs.so_api_token }}
