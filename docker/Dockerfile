@@ -12,7 +12,7 @@ RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 # Go build stage for KICS
 FROM golang:1.22.2-alpine as go-build-stage
 
-ARG KICS_VERSION=1.7.13
+ARG KICS_VERSION=1.7.12
 
 # Install kics from GitHub
 WORKDIR /usr/local/kics
