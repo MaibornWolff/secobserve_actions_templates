@@ -12,7 +12,7 @@ else
 fi
 
 if [[ -z "${OUTPUT_PATH}" ]]; then
-  OUTPUT_PATH=.
+  OUTPUT_PATH="${WORKSPACE}"
 fi
 
 export SO_FILE_NAME="${OUTPUT_PATH}"/"${REPORT_NAME}"
