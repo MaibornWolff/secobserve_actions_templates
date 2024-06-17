@@ -28,7 +28,7 @@ jobs:
         run: echo "CREATED=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
       -
         name: Build and push scanners
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./docker//Dockerfile
@@ -40,7 +40,7 @@ jobs:
             VERSION=dev
       -
         name: Build and push ZAP
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./docker_zap//Dockerfile
