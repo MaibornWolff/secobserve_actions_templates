@@ -12,7 +12,7 @@ RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 # Go build stage for KICS
 FROM golang:1.23.0-alpine AS go-build-stage
 
-ARG KICS_VERSION=2.1.1
+ARG KICS_VERSION=2.1.2
 
 # Install kics from GitHub
 WORKDIR /usr/local/kics
@@ -25,9 +25,9 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
 FROM python:3.12.5-alpine AS python-run-stage
 
 ARG GITLEAKS_VERSION=8.18.4
-ARG GRYPE_VERSION=0.79.3
-ARG KICS_VERSION=2.1.1
-ARG TRIVY_VERSION=0.53.0
+ARG GRYPE_VERSION=0.79.6
+ARG KICS_VERSION=2.1.2
+ARG TRIVY_VERSION=0.54.1
 ARG TFSEC_VERSION=1.28.10
 
 ARG CREATED
