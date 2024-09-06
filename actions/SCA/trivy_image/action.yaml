@@ -10,6 +10,10 @@ inputs:
   report_name:
     description: 'The name of the report to be written.'
     required: true
+  docker_pull:
+    description: 'No docker pull if value is not "true", default is "true"'
+    required: false
+    default: 'true'
   further_parameters:
     description: 'Further parameters to be given to the scanner.'
     required: false
@@ -48,6 +52,7 @@ runs:
     TARGET: ${{ inputs.target }}
     REPORT_NAME: ${{ inputs.report_name }}
     FURTHER_PARAMETERS: ${{ inputs.further_parameters }}
+    DOCKER_PULL: ${{ inputs.docker_pull }}
     SO_UPLOAD: ${{ inputs.so_upload }}
     SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
     SO_API_TOKEN: ${{ inputs.so_api_token }}
