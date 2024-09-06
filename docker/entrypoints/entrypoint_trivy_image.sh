@@ -25,7 +25,7 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
 fi
 
 cd "$WORKSPACE"
-if [ "$SO_UPLOAD" == "true" ]; then
+if [ "$DOCKER_PULL" == "true" ]; then
   docker pull --quiet "$TARGET"
 fi
 trivy image $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --scanners vuln --output "$REPORT_NAME" "$TARGET"
