@@ -1,5 +1,5 @@
 # Python build stage
-FROM python:3.12.5-alpine AS python-build-stage
+FROM python:3.12.6-alpine AS python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
 RUN apk add --no-cache gcc musl-dev python3-dev
@@ -10,7 +10,7 @@ COPY docker/requirements.txt .
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 
 # Go build stage for KICS
-FROM golang:1.23.0-alpine AS go-build-stage
+FROM golang:1.23.1-alpine AS go-build-stage
 
 ARG KICS_VERSION=2.1.2
 
@@ -22,12 +22,12 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
     && go build -o ./bin/kics cmd/console/main.go
 
 # Python run stage
-FROM python:3.12.5-alpine AS python-run-stage
+FROM python:3.12.6-alpine AS python-run-stage
 
-ARG GITLEAKS_VERSION=8.18.4
-ARG GRYPE_VERSION=0.79.6
+ARG GITLEAKS_VERSION=8.19.3
+ARG GRYPE_VERSION=0.81.0
 ARG KICS_VERSION=2.1.2
-ARG TRIVY_VERSION=0.54.1
+ARG TRIVY_VERSION=0.55.2
 ARG TFSEC_VERSION=1.28.10
 
 ARG CREATED
