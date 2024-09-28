@@ -24,10 +24,10 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
 # Python run stage
 FROM python:3.12.6-alpine AS python-run-stage
 
-ARG GITLEAKS_VERSION=8.18.4
-ARG GRYPE_VERSION=0.79.6
+ARG GITLEAKS_VERSION=8.19.3
+ARG GRYPE_VERSION=0.81.0
 ARG KICS_VERSION=2.1.2
-ARG TRIVY_VERSION=0.54.1
+ARG TRIVY_VERSION=0.55.2
 ARG TFSEC_VERSION=1.28.10
 
 ARG CREATED
