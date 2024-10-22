@@ -18,10 +18,6 @@ inputs:
     description: 'Further parameters to be given to the scanner.'
     required: false
     default: ''
-  licenses:
-    description: 'Include licenses in the scan.'
-    required: false
-    default: 'false'
   so_upload:
     description: 'No upload of observations into SecObserve if value is not "true", default is "true".'
     required: false
@@ -57,7 +53,6 @@ runs:
     REPORT_NAME: ${{ inputs.report_name }}
     RUN_DIRECTORY: ${{ inputs.run_directory }}
     FURTHER_PARAMETERS: ${{ inputs.further_parameters }}
-    LICENSES: ${{ inputs.licenses }}
     SO_UPLOAD: ${{ inputs.so_upload }}
     SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
     SO_API_TOKEN: ${{ inputs.so_api_token }}
