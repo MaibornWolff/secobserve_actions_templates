@@ -25,16 +25,8 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
-export SCANNERS="vuln"
-if [[ -n "$LICENSES" ]]; then
-  echo - LICENSES          : "$LICENSES"
-  if [ "$LICENSES" == "true" ]; then
-    export SCANNERS="vuln,license"
-  fi
-fi
-
 cd "$RUN_DIRECTORY"
-trivy filesystem $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --scanners $SCANNERS --output "$WORKSPACE/$REPORT_NAME" "$TARGET"
+trivy filesystem $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --scanners vuln --output "$WORKSPACE/$REPORT_NAME" "$TARGET"
 cd "$WORKSPACE"
 
 if [ "$SO_UPLOAD" == "true" ]; then
