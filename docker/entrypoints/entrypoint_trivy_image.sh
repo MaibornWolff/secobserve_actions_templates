@@ -24,8 +24,16 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
+export SCANNERS="vuln"
+if [[ -n "$LICENSES" ]]; then
+  echo - LICENSES          : "$LICENSES"
+  if [ "$LICENSES" == "true" ]; then
+    export SCANNERS="vuln,license"
+  fi
+fi
+
 cd "$WORKSPACE"
-trivy image $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --scanners vuln --output "$REPORT_NAME" "$TARGET"
+trivy image $FURTHER_PARAMETERS --quiet --exit-code 0 --format cyclonedx --scanners $SCANNERS --output "$REPORT_NAME" "$TARGET"
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh
