@@ -5,6 +5,7 @@
   variables:
     FURTHER_PARAMETERS: ""
     RUN_DIRECTORY: "."
+    LICENSES: "false"
     SO_UPLOAD: "true"
   script:
     - /entrypoints/entrypoint_trivy_filesystem.sh
