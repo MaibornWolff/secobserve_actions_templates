@@ -16,6 +16,10 @@ fi
 export SO_FILE_NAME="${REPORT_NAME}"
 export SO_PARSER_NAME="CycloneDX"
 
+if [[ -z "${SO_SUPPRESS_LICENSES}" ]]; then
+  export SO_SUPPRESS_LICENSES=true
+fi
+
 echo ----------------------------------------
 echo Trivy Filesystem
 echo - TARGET:             "$TARGET"

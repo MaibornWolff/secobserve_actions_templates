@@ -13,6 +13,7 @@ class Environment:
         self.service = os.getenv("SO_ORIGIN_SERVICE", None)
         self.docker_image_name_tag = os.getenv("SO_ORIGIN_DOCKER_IMAGE_NAME_TAG", None)
         self.endpoint_url = os.getenv("SO_ORIGIN_ENDPOINT_URL", None)
+        self.suppress_licenses = os.getenv("SO_SUPPRESS_LICENSES", None)
 
     def check_environment_file_upload(self):
         error_string = self.check_environment_common()
@@ -41,6 +42,7 @@ class Environment:
             print("- SO_ORIGIN_DOCKER_IMAGE_NAME_TAG: ", self.docker_image_name_tag)
         if self.endpoint_url:
             print("- SO_ORIGIN_ENDPOINT_URL:          ", self.endpoint_url)
+        print("- SO_SUPPRESS_LICENSES:            ", self.suppress_licenses)
         print("")
 
     def check_environment_common(self):
