@@ -21,9 +21,15 @@
     "packageRules": [
         {
             "matchPackageNames": [
+                "python"
+            ],
+            "allowedVersions": "<3.13"
+        },
+        {
+            "matchPackageNames": [
                 "node"
             ],
-            "allowedVersions": "<19"
+            "allowedVersions": "<23"
         }
     ]
 }
