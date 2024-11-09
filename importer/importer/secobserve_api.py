@@ -35,6 +35,7 @@ class Api:
             payload["docker_image_name_tag"] = self.environment.docker_image_name_tag
         if self.environment.endpoint_url is not None:
             payload["endpoint_url"] = self.environment.endpoint_url
+        payload["suppress_licenses"] = self.environment.suppress_licenses
 
         with open(self.environment.file_name, "r") as file:
             file.seek(0)
