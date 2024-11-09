@@ -42,7 +42,8 @@ class Environment:
             print("- SO_ORIGIN_DOCKER_IMAGE_NAME_TAG: ", self.docker_image_name_tag)
         if self.endpoint_url:
             print("- SO_ORIGIN_ENDPOINT_URL:          ", self.endpoint_url)
-        print("- SO_SUPPRESS_LICENSES:            ", self.suppress_licenses)
+        if self.suppress_licenses is not None:
+            print("- SO_SUPPRESS_LICENSES:            ", self.suppress_licenses)
         print("")
 
     def check_environment_common(self):
