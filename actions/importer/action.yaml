@@ -34,6 +34,10 @@ inputs:
   so_origin_endpoint_url:
     description: 'URL of endpoint to be set for all imported observations.'
     required: false
+  so_suppress_licenses:
+    description: 'Suppress importing license information if value is "true", default is "true".'
+    required: false
+    default: 'true'
 
 runs:
   using: 'docker'
@@ -50,3 +54,4 @@ runs:
     SO_ORIGIN_SERVICE: ${{ inputs.so_origin_service }}
     SO_ORIGIN_DOCKER_IMAGE_NAME_TAG: ${{ inputs.so_origin_docker_image_name_tag }}
     SO_ORIGIN_ENDPOINT_URL: ${{ inputs.so_origin_endpoint_url }}
+    SO_SUPPRESS_LICENSES: ${{ inputs.so_suppress_licenses }}
