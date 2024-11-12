@@ -35,9 +35,9 @@ inputs:
     description: 'URL of endpoint to be set for all imported observations.'
     required: false
   so_suppress_licenses:
-    description: 'Suppress importing license information if value is "true", default is "true".'
+    description: 'Suppress importing license information if value is "true", default is "false".'
     required: false
-    default: 'true'
+    default: 'false'
 
 runs:
   using: 'docker'
