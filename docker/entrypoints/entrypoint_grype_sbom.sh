@@ -19,7 +19,7 @@ if [[ -z "${SO_SUPPRESS_LICENSES}" ]]; then
 fi
 
 echo ----------------------------------------
-echo Grype Image
+echo Grype SBOM
 echo - TARGET:             "$TARGET"
 echo - REPORT_NAME:        "$REPORT_NAME"
 if [[ -n "$FURTHER_PARAMETERS" ]]; then
@@ -27,7 +27,7 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
 fi
 
 cd "$WORKSPACE"
-grype docker:"$TARGET" $FURTHER_PARAMETERS --by-cve --quiet --output cyclonedx-json --file "$REPORT_NAME"
+grype sbom:"$TARGET" $FURTHER_PARAMETERS --by-cve --quiet --output cyclonedx-json --file "$REPORT_NAME"
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh

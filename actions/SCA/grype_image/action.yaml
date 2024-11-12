@@ -6,7 +6,6 @@ inputs:
   target:
     description: 'The target to be scanned, here the name of the docker image.'
     required: true
-    default: '.'
   report_name:
     description: 'The name of the report to be written.'
     required: true

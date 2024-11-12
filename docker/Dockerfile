@@ -1,5 +1,5 @@
 # Python build stage
-FROM python:3.12.6-alpine AS python-build-stage
+FROM python:3.12.7-alpine AS python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
 RUN apk add --no-cache gcc musl-dev python3-dev
