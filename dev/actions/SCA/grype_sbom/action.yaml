@@ -1,10 +1,10 @@
-name: 'SecObserve Grype image'
-description: 'Scans Docker images for vulnerabilities with Grype'
+name: 'SecObserve Grype SBOM'
+description: 'Scans CycloneDX SBOMs for vulnerabilities with Grype'
 author: 'MaibornWolff'
 
 inputs:
   target:
-    description: 'The target to be scanned, here the name of the docker image.'
+    description: 'The target to be scanned, here the name of a CycloneDX SBOM.'
     required: true
   report_name:
     description: 'The name of the report to be written.'
@@ -45,8 +45,8 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners:latest'
-  entrypoint: '/entrypoints/entrypoint_grype_image.sh'
+  image: 'docker://maibornwolff/secobserve-scanners:dev'
+  entrypoint: '/entrypoints/entrypoint_grype_sbom.sh'
   env:
     TARGET: ${{ inputs.target }}
     REPORT_NAME: ${{ inputs.report_name }}
