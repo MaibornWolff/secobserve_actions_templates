@@ -27,8 +27,7 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
 fi
 
 cd "$WORKSPACE"
-docker pull --quiet "$TARGET"
-grype docker:"$TARGET" $FURTHER_PARAMETERS --quiet --output cyclonedx-json --file "$REPORT_NAME"
+grype docker:"$TARGET" $FURTHER_PARAMETERS --by-cve --quiet --output cyclonedx-json --file "$REPORT_NAME"
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh
