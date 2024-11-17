@@ -16,7 +16,7 @@ if [[ -z "${OUTPUT_PATH}" ]]; then
 fi
 
 export SO_FILE_NAME="${OUTPUT_PATH}"/"${REPORT_NAME}"
-export SO_PARSER_NAME="Sarif"
+export SO_PARSER_NAME="SARIF"
 
 echo ----------------------------------------
 echo KICS
