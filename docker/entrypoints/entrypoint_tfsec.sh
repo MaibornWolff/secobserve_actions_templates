@@ -12,7 +12,7 @@ else
 fi
 
 export SO_FILE_NAME="${REPORT_NAME}"
-export SO_PARSER_NAME="Sarif"
+export SO_PARSER_NAME="SARIF"
 
 echo ----------------------------------------
 echo tfsec
