@@ -9,12 +9,16 @@ def check_security_gate():
         environment.check_environment_common()
         api = Api()
         product = api.get_product()
+        if product.get("security_gate_passed") == None:
+            print(f"Product {product.get('name')}: Security gate DISABLED")            
+            exit(1)
+
         if product.get("security_gate_passed") == False:
             print(f"Product {product.get('name')}: Security gate FAILED")            
             exit(1)
-        else:
-            print(f"Product {product.get('name')}: Security gate PASSED")
-            exit(0)
+
+        print(f"Product {product.get('name')}: Security gate PASSED")
+        exit(0)
     except Exception as e:
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         print(f"{e.__class__.__name__}: {str(e)}")
