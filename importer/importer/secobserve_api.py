@@ -1,5 +1,4 @@
 import requests
-from http import HTTPStatus
 
 from importer.environment import Environment
 
@@ -55,3 +54,25 @@ class Api:
             response.raise_for_status()
 
             print(response.json())
+
+    def get_product(self) -> dict:
+        response = requests.get(
+            f"{self.environment.api_base_url}/api/products/?name={self.environment.product_name}",
+            headers=self.headers,
+        )
+        response.raise_for_status()
+
+        data = response.json()
+
+        count = data.get("count", None)
+        if count == None:
+            raise ValueError("Count not found in response")
+        if count == 0:
+            raise ValueError(f"Product {self.environment.product_name} not found")
+
+        results = data.get("results", [])
+        for result in results:
+            if result["name"] == self.environment.product_name:
+                return result
+
+        raise ValueError(f"Product {self.environment.product_name} not found")

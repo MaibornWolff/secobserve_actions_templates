@@ -3,12 +3,18 @@ from importer.environment import Environment
 from requests.exceptions import HTTPError
 
 
-def file_upload_observations():
+def check_security_gate():
     try:
         environment = Environment()
-        environment.check_environment_file_upload()
+        environment.check_environment_common()
         api = Api()
-        api.file_upload_observations()
+        product = api.get_product()
+        if product.get("security_gate_passed") == False:
+            print(f"Product {product.get('name')}: Security gate FAILED")            
+            exit(1)
+        else:
+            print(f"Product {product.get('name')}: Security gate PASSED")
+            exit(0)
     except Exception as e:
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         print(f"{e.__class__.__name__}: {str(e)}")
@@ -19,4 +25,4 @@ def file_upload_observations():
 
 
 if __name__ == "__main__":
-    file_upload_observations()
+    check_security_gate()

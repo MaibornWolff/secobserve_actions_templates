@@ -1,0 +1,23 @@
+name: 'SecObserve Check Security Gate'
+description: 'Checks SecObserve security gate for a product'
+author: 'MaibornWolff'
+
+inputs:
+  so_api_base_url:
+    description: 'Base URL of the SecObserve backend'
+    required: true
+  so_api_token:
+    description: 'API token of the user to be used for the check.'
+    required: true
+  so_product_name:
+    description: 'Name of the product for which the security gate check is being performed.'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'docker://maibornwolff/secobserve-scanners:dev'
+  entrypoint: 'check_security_gate.sh'
+  env:
+    SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
+    SO_API_TOKEN: ${{ inputs.so_api_token }}
+    SO_PRODUCT_NAME: ${{ inputs.so_product_name }}
