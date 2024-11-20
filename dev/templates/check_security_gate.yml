@@ -1,4 +1,4 @@
-.importer:
+.check_security_gate:
   image:
     name: maibornwolff/secobserve-scanners:dev
   stage: post_test
