@@ -1,0 +1,8 @@
+.check_security_gate:
+  image:
+    name: maibornwolff/secobserve-scanners:latest
+  stage: post_test
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - check_security_gate.sh

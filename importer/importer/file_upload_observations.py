@@ -10,9 +10,11 @@ def file_upload_observations():
         api = Api()
         api.file_upload_observations()
     except Exception as e:
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         print(f"{e.__class__.__name__}: {str(e)}")
         if isinstance(e, HTTPError):
             print(f"Response: {e.response.content.decode('utf-8')}")
+        print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
         exit(1)
 
 
