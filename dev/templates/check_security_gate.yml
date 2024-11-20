@@ -1,0 +1,8 @@
+.importer:
+  image:
+    name: maibornwolff/secobserve-scanners:dev
+  stage: post_test
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - check_security_gate.sh
