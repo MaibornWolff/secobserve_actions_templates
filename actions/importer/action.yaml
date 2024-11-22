@@ -41,7 +41,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners:latest'
+  image: 'docker://maibornwolff/secobserve-scanners:2024_11_2'
   entrypoint: 'file_upload_observations.sh'
   env:
     SO_UPLOAD: ${{ inputs.so_upload }}

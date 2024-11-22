@@ -1,6 +1,6 @@
 .zap:
   image:
-    name: maibornwolff/secobserve-scanners-zap:latest
+    name: maibornwolff/secobserve-scanners-zap:2024_11_2
   stage: post_deploy
   variables:
     GIT_STRATEGY: none
