@@ -50,7 +50,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners:latest'
+  image: 'docker://maibornwolff/secobserve-scanners:2024_11_3'
   entrypoint: '/entrypoints/entrypoint_trivy_filesystem.sh'
   env:
     TARGET: ${{ inputs.target }}
