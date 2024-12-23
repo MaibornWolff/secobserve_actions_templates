@@ -1,15 +1,15 @@
 # Bandit
 # ----------------------------------------------------------------
-bandit==1.7.10  # https://github.com/PyCQA/bandit
+bandit==1.8.0  # https://github.com/PyCQA/bandit
 bandit-sarif-formatter==1.1.1  # https://github.com/microsoft/bandit-sarif-formatter
 
 # Checkov
 # ----------------------------------------------------------------
-checkov==3.2.283  # https://github.com/bridgecrewio/checkov
+checkov==3.2.344  # https://github.com/bridgecrewio/checkov
 
 # Semgrep
 # ----------------------------------------------------------------
-semgrep==1.96.0  # https://github.com/returntocorp/semgrep
+semgrep==1.101.0  # https://github.com/returntocorp/semgrep
 
 # CryptoLyzer
 # ----------------------------------------------------------------

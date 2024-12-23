@@ -10,7 +10,7 @@ COPY docker/requirements.txt .
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 
 # Go build stage for KICS
-FROM golang:1.23.3-alpine AS go-build-stage
+FROM golang:1.23.4-alpine AS go-build-stage
 
 ARG KICS_VERSION=2.1.3
 
@@ -24,10 +24,10 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
 # Python run stage
 FROM python:3.12.7-alpine AS python-run-stage
 
-ARG GITLEAKS_VERSION=8.21.2
-ARG GRYPE_VERSION=0.84.0
+ARG GITLEAKS_VERSION=8.22.0
+ARG GRYPE_VERSION=0.86.1
 ARG KICS_VERSION=2.1.3
-ARG TRIVY_VERSION=0.57.0
+ARG TRIVY_VERSION=0.58.0
 ARG TFSEC_VERSION=1.28.11
 
 ARG CREATED
