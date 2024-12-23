@@ -46,7 +46,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners:2024_11_3'
+  image: 'docker://maibornwolff/secobserve-scanners:2024_12'
   entrypoint: '/entrypoints/entrypoint_checkov.sh'
   env:
     TARGET: ${{ inputs.target }}
