@@ -15,7 +15,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners:2024_12'
+  image: 'docker://maibornwolff/secobserve-scanners:2025_01'
   entrypoint: 'check_security_gate.sh'
   env:
     SO_API_BASE_URL: ${{ inputs.so_api_base_url }}

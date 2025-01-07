@@ -45,7 +45,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners:2024_12'
+  image: 'docker://maibornwolff/secobserve-scanners:2025_01'
   entrypoint: '/entrypoints/entrypoint_grype_sbom.sh'
   env:
     TARGET: ${{ inputs.target }}
