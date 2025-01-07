@@ -1,6 +1,6 @@
 .check_security_gate:
   image:
-    name: maibornwolff/secobserve-scanners:2024_12
+    name: maibornwolff/secobserve-scanners:2025_01
   stage: post_test
   variables:
     GIT_STRATEGY: none
