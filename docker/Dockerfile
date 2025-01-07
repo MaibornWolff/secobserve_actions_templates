@@ -1,5 +1,5 @@
 # Python build stage
-FROM python:3.12.7-alpine AS python-build-stage
+FROM python:3.12.8-alpine AS python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
 RUN apk add --no-cache gcc musl-dev python3-dev
@@ -22,13 +22,13 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
     && go build -o ./bin/kics cmd/console/main.go
 
 # Python run stage
-FROM python:3.12.7-alpine AS python-run-stage
+FROM python:3.12.8-alpine AS python-run-stage
 
-ARG GITLEAKS_VERSION=8.22.0
+ARG GITLEAKS_VERSION=8.22.1
 ARG GRYPE_VERSION=0.86.1
 ARG KICS_VERSION=2.1.3
-ARG TRIVY_VERSION=0.58.0
-ARG TFSEC_VERSION=1.28.11
+ARG TRIVY_VERSION=0.58.1
+ARG TFSEC_VERSION=1.28.12
 
 ARG CREATED
 ARG REVISION
