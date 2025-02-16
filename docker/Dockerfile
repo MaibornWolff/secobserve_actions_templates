@@ -1,5 +1,5 @@
 # Python build stage
-FROM python:3.12.9-alpine3.20@sha256:4ce45e8acd11d49ee07aa736cd7ca2950df75033b946f3a5d9eca1cb4aae2ab7 AS python-build-stage
+FROM python:3.12.9-alpine3.19@sha256:017a82f185bf6f10e62156f3e89b7e694d56d613b5a3f4dbf1d28f1014a972ed AS python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
 RUN apk add --no-cache gcc musl-dev python3-dev
@@ -22,7 +22,7 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
     && go build -o ./bin/kics cmd/console/main.go
 
 # Python run stage
-FROM python:3.12.9-alpine3.20@sha256:4ce45e8acd11d49ee07aa736cd7ca2950df75033b946f3a5d9eca1cb4aae2ab7 AS python-run-stage
+FROM python:3.12.9-alpine3.19@sha256:017a82f185bf6f10e62156f3e89b7e694d56d613b5a3f4dbf1d28f1014a972ed AS python-run-stage
 
 ARG GITLEAKS_VERSION=8.23.3
 ARG GRYPE_VERSION=0.87.0
