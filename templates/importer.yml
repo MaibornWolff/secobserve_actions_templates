@@ -1,6 +1,6 @@
 .importer:
   image:
-    name: maibornwolff/secobserve-scanners:2025_01
+    name: maibornwolff/secobserve-scanners:2025_03
   stage: upload
   variables:
     GIT_STRATEGY: none
