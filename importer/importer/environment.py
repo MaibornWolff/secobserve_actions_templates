@@ -21,21 +21,18 @@ class Environment:
             if error_string != "":
                 error_string = error_string + " / "
             error_string = error_string + "SO_FILE_NAME is missing"
-        if self.parser_name is None:
-            if error_string != "":
-                error_string = error_string + " / "
-            error_string = error_string + "SO_PARSER_NAME is missing"
 
         if len(error_string) > 0:
             raise Exception(error_string)
 
-        print("SecObserve Importer")
+        print("SecObserve upload")
         print("- SO_API_BASE_URL:                 ", self.api_base_url)
         print("- SO_PRODUCT_NAME:                 ", self.product_name)
         if self.branch_name:
             print("- SO_BRANCH_NAME:                  ", self.branch_name)
         print("- SO_FILE_NAME:                    ", self.file_name)
-        print("- SO_PARSER_NAME:                  ", self.parser_name)
+        if self.parser_name:
+            print("- SO_PARSER_NAME:                  ", self.parser_name)
         if self.service:
             print("- SO_ORIGIN_SERVICE:               ", self.service)
         if self.docker_image_name_tag:
