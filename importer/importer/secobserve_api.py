@@ -16,10 +16,6 @@ class Api:
             # "Content-Type": "multipart/form-data",
             "Authorization": "APIToken " + self.environment.api_token
         }
-        self.file_upload_url = (
-            self.environment.api_base_url
-            + "/api/import/file_upload_observations_by_name/"
-        )
 
     def file_upload_observations(self):
         payload = {
@@ -46,7 +42,33 @@ class Api:
                 )
             }
             response = requests.post(
-                self.file_upload_url,
+                self.environment.api_base_url + "/api/import/file_upload_observations_by_name/",
+                headers=self.headers_multipart,
+                data=payload,
+                files=files,
+            )
+            response.raise_for_status()
+
+            print(response.json())
+
+    def file_upload_sbom(self):
+        payload = {
+            "product_name": self.environment.product_name,
+        }
+        if self.environment.branch_name is not None:
+            payload["branch_name"] = self.environment.branch_name
+
+        with open(self.environment.file_name, "r") as file:
+            file.seek(0)
+            files = {
+                "file": (
+                    self.environment.file_name,
+                    file,
+                    "application/json",
+                )
+            }
+            response = requests.post(
+                self.environment.api_base_url + "/api/import/file_upload_sbom_by_name/",
                 headers=self.headers_multipart,
                 data=payload,
                 files=files,

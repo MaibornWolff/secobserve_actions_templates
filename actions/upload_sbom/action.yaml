@@ -1,0 +1,31 @@
+name: 'SecObserve upload SBOM'
+description: 'Upload SBOM into SecObserve'
+author: 'MaibornWolff'
+
+inputs:
+  so_api_base_url:
+    description: 'Base URL of the SecObserve backend'
+    required: true
+  so_api_token:
+    description: 'API token of the user to be used for the upload.'
+    required: true
+  so_product_name:
+    description: 'Name of the product into which the SBOM is imported. The product has to exist before starting the import.'
+    required: true
+  so_branch_name:
+    description: 'Name of the product branch into which the SBOM is imported. If the branch does not exist yet, it is automatically created.'
+    required: false
+  so_file_name:
+    description: 'Name of the SBOM file to upload.'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'docker://maibornwolff/secobserve-scanners:2025_03'
+  entrypoint: 'file_upload_observations.sh'
+  env:
+    SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
+    SO_API_TOKEN: ${{ inputs.so_api_token }}
+    SO_PRODUCT_NAME: ${{ inputs.so_product_name }}
+    SO_BRANCH_NAME: ${{ inputs.so_branch_name }}
+    SO_FILE_NAME: ${{ inputs.so_file_name }}

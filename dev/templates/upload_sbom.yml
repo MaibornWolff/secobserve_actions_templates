@@ -1,0 +1,9 @@
+.importer:
+  image:
+    name: maibornwolff/secobserve-scanners:dev
+  stage: upload
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - file_upload_sbom.sh
+  allow_failure: true
