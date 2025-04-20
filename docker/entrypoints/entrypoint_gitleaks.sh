@@ -25,7 +25,7 @@ fi
 
 git config --global --add safe.directory "$WORKSPACE"
 cd "$RUN_DIRECTORY"
-gitleaks detect $FURTHER_PARAMETERS --log-level warn --exit-code 0 --no-git --redact --report-format sarif --report-path "$WORKSPACE/$REPORT_NAME"
+gitleaks detect $FURTHER_PARAMETERS --no-banner --log-level warn --exit-code 0 --no-git --redact --report-format sarif --report-path "$WORKSPACE/$REPORT_NAME"
 cd "$WORKSPACE"
 
 if [ "$SO_UPLOAD" == "true" ]; then
