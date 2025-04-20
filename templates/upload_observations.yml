@@ -1,0 +1,10 @@
+.importer:
+  image:
+    name: maibornwolff/secobserve-scanners:2025_03
+  stage: upload
+  variables:
+    GIT_STRATEGY: none
+    SO_SUPPRESS_LICENSES: true
+  script:
+    - file_upload_observations.sh
+  allow_failure: true

@@ -21,10 +21,6 @@ class Environment:
             if error_string != "":
                 error_string = error_string + " / "
             error_string = error_string + "SO_FILE_NAME is missing"
-        if self.parser_name is None:
-            if error_string != "":
-                error_string = error_string + " / "
-            error_string = error_string + "SO_PARSER_NAME is missing"
 
         if len(error_string) > 0:
             raise Exception(error_string)
