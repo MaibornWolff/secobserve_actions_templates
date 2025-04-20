@@ -25,7 +25,7 @@ class Environment:
         if len(error_string) > 0:
             raise Exception(error_string)
 
-        print("SecObserve Upload")
+        print("SecObserve upload")
         print("- SO_API_BASE_URL:                 ", self.api_base_url)
         print("- SO_PRODUCT_NAME:                 ", self.product_name)
         if self.branch_name:
