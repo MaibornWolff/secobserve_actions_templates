@@ -25,13 +25,14 @@ class Environment:
         if len(error_string) > 0:
             raise Exception(error_string)
 
-        print("SecObserve Importer")
+        print("SecObserve Upload")
         print("- SO_API_BASE_URL:                 ", self.api_base_url)
         print("- SO_PRODUCT_NAME:                 ", self.product_name)
         if self.branch_name:
             print("- SO_BRANCH_NAME:                  ", self.branch_name)
         print("- SO_FILE_NAME:                    ", self.file_name)
-        print("- SO_PARSER_NAME:                  ", self.parser_name)
+        if self.parser_name:
+            print("- SO_PARSER_NAME:                  ", self.parser_name)
         if self.service:
             print("- SO_ORIGIN_SERVICE:               ", self.service)
         if self.docker_image_name_tag:
