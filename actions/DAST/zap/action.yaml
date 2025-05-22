@@ -46,7 +46,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners-zap:2025_04'
+  image: 'docker://maibornwolff/secobserve-scanners-zap:2025_05'
   entrypoint: '/entrypoints/entrypoint_zap.sh'
   env:
     TARGET: ${{ inputs.target }}
