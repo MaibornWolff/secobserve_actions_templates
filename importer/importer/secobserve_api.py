@@ -57,6 +57,8 @@ class Api:
         }
         if self.environment.branch_name is not None:
             payload["branch_name"] = self.environment.branch_name
+        if self.environment.service is not None:
+            payload["service"] = self.environment.service
 
         with open(self.environment.file_name, "r") as file:
             file.seek(0)
