@@ -18,10 +18,13 @@ inputs:
   so_file_name:
     description: 'Name of the SBOM file to upload.'
     required: true
+  so_origin_service:
+    description: 'Service name to be set for all imported components.'
+    required: false
 
 runs:
   using: 'docker'
-  image: 'docker://maibornwolff/secobserve-scanners:2025_04'
+  image: 'docker://maibornwolff/secobserve-scanners:2025_05'
   entrypoint: 'file_upload_observations.sh'
   env:
     SO_API_BASE_URL: ${{ inputs.so_api_base_url }}
@@ -29,3 +32,4 @@ runs:
     SO_PRODUCT_NAME: ${{ inputs.so_product_name }}
     SO_BRANCH_NAME: ${{ inputs.so_branch_name }}
     SO_FILE_NAME: ${{ inputs.so_file_name }}
+    SO_ORIGIN_SERVICE: ${{ inputs.so_origin_service }}
