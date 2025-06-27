@@ -17,4 +17,4 @@ CryptoLyzer==1.0.0  # https://gitlab.com/coroner/cryptolyzer
 
 # Importer
 # ----------------------------------------------------------------
-requests==2.32.3
+requests==2.32.4
