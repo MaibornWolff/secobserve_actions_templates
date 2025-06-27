@@ -1,6 +1,6 @@
 .kics:
   image:
-    name: maibornwolff/secobserve-scanners:2025_05
+    name: maibornwolff/secobserve-scanners:2025_06
   stage: test
   variables:
     FURTHER_PARAMETERS: ""
