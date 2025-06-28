@@ -1,6 +1,6 @@
 .trivy_image:
   image:
-    name: maibornwolff/secobserve-scanners:2025_05
+    name: maibornwolff/secobserve-scanners:2025_06
   stage: test
   variables:
     GIT_STRATEGY: none
