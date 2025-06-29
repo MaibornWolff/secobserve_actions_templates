@@ -1,5 +1,5 @@
 # Python build stage
-FROM python:3.12-alpine AS python-build-stage
+FROM python:3.13-alpine AS python-build-stage
 
 # Install gcc to be able to compile wheels for python packages
 RUN apk add --no-cache gcc musl-dev python3-dev
@@ -10,9 +10,9 @@ COPY docker/requirements.txt .
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
 
 # Go build stage for KICS
-FROM golang:1.24.3-alpine AS go-build-stage
+FROM golang:1.24.4-alpine AS go-build-stage
 
-ARG KICS_VERSION=2.1.8
+ARG KICS_VERSION=2.1.10
 
 # Install kics from GitHub
 WORKDIR /usr/local/kics
@@ -22,12 +22,12 @@ RUN wget --no-verbose https://github.com/Checkmarx/kics/archive/refs/tags/v${KIC
     && go build -o ./bin/kics cmd/console/main.go
 
 # Python run stage
-FROM python:3.12-alpine AS python-run-stage
+FROM python:3.13-alpine AS python-run-stage
 
-ARG GITLEAKS_VERSION=8.26.0
-ARG GRYPE_VERSION=0.92.2
-ARG KICS_VERSION=2.1.8
-ARG TRIVY_VERSION=0.62.1
+ARG GITLEAKS_VERSION=8.27.2
+ARG GRYPE_VERSION=0.94.0
+ARG KICS_VERSION=2.1.10
+ARG TRIVY_VERSION=0.63.0
 ARG TFSEC_VERSION=1.28.14
 
 ARG CREATED
@@ -57,7 +57,7 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 	&& rm -rf /wheels/ && rm -rf /tmp
 
 # Hack because Python's find_library doesn't work on Alpine
-RUN sed -i -e "s|get_library('crypto', 'libcrypto\.dylib', '42')|'/usr/lib/libcrypto\.so'|g" /usr/local/lib/python3.12/site-packages/oscrypto/_openssl/_libcrypto_cffi.py
+RUN sed -i -e "s|get_library('crypto', 'libcrypto\.dylib', '42')|'/usr/lib/libcrypto\.so'|g" /usr/local/lib/python3.13/site-packages/oscrypto/_openssl/_libcrypto_cffi.py
 
 # copy and install precompiled DrHeader library and rules
 COPY docker/drheader/drheader-1.7.0-py2.py3-none-any.whl docker/drheader/rules.yml ./

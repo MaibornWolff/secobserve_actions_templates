@@ -1,6 +1,6 @@
 .zap:
   image:
-    name: maibornwolff/secobserve-scanners-zap:2025_05
+    name: docker.io/maibornwolff/secobserve-scanners-zap:2025_06
   stage: post_deploy
   variables:
     GIT_STRATEGY: none

@@ -1,6 +1,6 @@
 .grype_image:
   image:
-    name: maibornwolff/secobserve-scanners:dev
+    name: docker.io/maibornwolff/secobserve-scanners:dev
   stage: test
   variables:
     GIT_STRATEGY: none
