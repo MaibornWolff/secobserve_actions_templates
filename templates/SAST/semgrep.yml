@@ -1,6 +1,6 @@
 .semgrep:
   image:
-    name: maibornwolff/secobserve-scanners:2025_06
+    name: docker.io/maibornwolff/secobserve-scanners:2025_06
   stage: test
   variables:
     FURTHER_PARAMETERS: ""
