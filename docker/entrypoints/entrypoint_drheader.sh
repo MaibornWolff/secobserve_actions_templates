@@ -28,8 +28,10 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
+source .venv/bin/activate
 cd "$WORKSPACE"
 drheader scan single $FURTHER_PARAMETERS --no-error --rules "$RULES" --json "$TARGET" >"$REPORT_NAME"
+deactivate
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh

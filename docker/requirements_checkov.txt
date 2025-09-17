@@ -1,0 +1,3 @@
+# Checkov
+# ----------------------------------------------------------------
+checkov==3.2.471  # https://github.com/bridgecrewio/checkov

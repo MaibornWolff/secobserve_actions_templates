@@ -8,6 +8,8 @@ RUN apk add --no-cache gcc musl-dev python3-dev
 WORKDIR /usr/local
 COPY docker/requirements.txt .
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r ./requirements.txt
+COPY docker/requirements_checkov.txt .
+RUN pip wheel --wheel-dir /usr/src/app/wheels_checkov -r ./requirements_checkov.txt
 
 # Go build stage for KICS
 FROM golang:1.25.1-alpine AS go-build-stage
@@ -52,16 +54,27 @@ RUN apk add --no-cache openssl-dev
 # All absolute dir copies ignore workdir instruction. All relative dir copies are wrt to the workdir instruction
 # copy python dependency wheels from python-build-stage
 COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
+COPY --from=python-build-stage /usr/src/app/wheels_checkov  /wheels_checkov/
 # use wheels to install python dependencies
-RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
-	&& rm -rf /wheels/ && rm -rf /tmp
-
-# Hack because Python's find_library doesn't work on Alpine
-RUN sed -i -e "s|get_library('crypto', 'libcrypto\.dylib', '42')|'/usr/lib/libcrypto\.so'|g" /usr/local/lib/python3.13/site-packages/oscrypto/_openssl/_libcrypto_cffi.py
+RUN python3 -m venv .venv \
+    && source .venv/bin/activate \
+    && pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
+	&& rm -rf /wheels/ && rm -rf /tmp \
+    && deactivate \
+    && python3 -m venv .venv_checkov \
+    && source .venv_checkov/bin/activate \
+    && pip install --no-cache-dir --no-index --find-links=/wheels_checkov/ /wheels_checkov/* \
+	&& rm -rf /wheels_checkov/ && rm -rf /tmp \
+    && deactivate \
+    # Hack because Python's find_library doesn't work on Alpine
+    && sed -i -e "s|get_library('crypto', 'libcrypto\.dylib', '42')|'/usr/lib/libcrypto\.so'|g" .venv/lib/python3.13/site-packages/oscrypto/_openssl/_libcrypto_cffi.py \
+    && sed -i -e "s|get_library('crypto', 'libcrypto\.dylib', '42')|'/usr/lib/libcrypto\.so'|g" .venv/lib/python3.13/site-packages/oscrypto/_openssl/_libcrypto_ctypes.py
 
 # copy and install precompiled DrHeader library and rules
 COPY docker/drheader/drheader-1.7.0-py2.py3-none-any.whl docker/drheader/rules.yml ./
-RUN pip install --no-cache-dir ./drheader-1.7.0-py2.py3-none-any.whl
+RUN source .venv/bin/activate \
+    && pip install --no-cache-dir ./drheader-1.7.0-py2.py3-none-any.whl \
+    && deactivate
 
 # install GitLeaks from Github
 WORKDIR /usr/local/gitleaks
