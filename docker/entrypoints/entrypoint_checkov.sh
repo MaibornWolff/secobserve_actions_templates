@@ -23,10 +23,12 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
+source .venv_checkov/bin/activate
 cd "$RUN_DIRECTORY"
 checkov $FURTHER_PARAMETERS --quiet --compact --soft-fail --directory "$TARGET" --output sarif
 mv results.sarif "$WORKSPACE/$REPORT_NAME"
 cd "$WORKSPACE"
+deactivate
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh
