@@ -57,12 +57,12 @@ COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
 COPY --from=python-build-stage /usr/src/app/wheels_checkov  /wheels_checkov/
 # use wheels to install python dependencies
 RUN python3 -m venv .venv \
-    && source .venv/bin/activate \
+    && source /.venv/bin/activate \
     && pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 	&& rm -rf /wheels/ && rm -rf /tmp \
     && deactivate \
     && python3 -m venv .venv_checkov \
-    && source .venv_checkov/bin/activate \
+    && source /.venv_checkov/bin/activate \
     && pip install --no-cache-dir --no-index --find-links=/wheels_checkov/ /wheels_checkov/* \
 	&& rm -rf /wheels_checkov/ && rm -rf /tmp \
     && deactivate \
@@ -72,7 +72,7 @@ RUN python3 -m venv .venv \
 
 # copy and install precompiled DrHeader library and rules
 COPY docker/drheader/drheader-1.7.0-py2.py3-none-any.whl docker/drheader/rules.yml ./
-RUN source .venv/bin/activate \
+RUN source /.venv/bin/activate \
     && pip install --no-cache-dir ./drheader-1.7.0-py2.py3-none-any.whl \
     && deactivate
 
