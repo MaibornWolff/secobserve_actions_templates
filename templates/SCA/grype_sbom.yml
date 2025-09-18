@@ -1,6 +1,6 @@
 .grype_image:
   image:
-    name: docker.io/maibornwolff/secobserve-scanners:2025_07
+    name: docker.io/maibornwolff/secobserve-scanners:2025_09
   stage: test
   variables:
     FURTHER_PARAMETERS: ""

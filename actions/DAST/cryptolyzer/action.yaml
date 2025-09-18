@@ -42,7 +42,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://docker.io/maibornwolff/secobserve-scanners:2025_07'
+  image: 'docker://docker.io/maibornwolff/secobserve-scanners:2025_09'
   entrypoint: '/entrypoints/entrypoint_cryptolyzer.sh'
   env:
     TARGET: ${{ inputs.target }}
