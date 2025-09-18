@@ -23,7 +23,7 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
-source .venv/bin/activate
+source /.venv/bin/activate
 cd "$RUN_DIRECTORY"
 bandit $FURTHER_PARAMETERS --quiet --format sarif --output "$WORKSPACE/$REPORT_NAME" --exit-zero --recursive "$TARGET"
 cd "$WORKSPACE"

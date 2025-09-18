@@ -23,7 +23,7 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
-source .venv/bin/activate
+source /.venv/bin/activate
 cd "$WORKSPACE"
 cryptolyze $FURTHER_PARAMETERS --output-format json tls all "$TARGET" >"$REPORT_NAME"
 deactivate
