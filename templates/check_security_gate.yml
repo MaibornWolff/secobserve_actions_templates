@@ -1,6 +1,6 @@
 .check_security_gate:
   image:
-    name: docker.io/maibornwolff/secobserve-scanners:2025_07
+    name: docker.io/maibornwolff/secobserve-scanners:2025_09
   stage: post_test
   variables:
     GIT_STRATEGY: none

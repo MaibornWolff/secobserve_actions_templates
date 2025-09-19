@@ -24,9 +24,11 @@ if [[ -n "$FURTHER_PARAMETERS" ]]; then
   echo - FURTHER_PARAMETERS: "$FURTHER_PARAMETERS"
 fi
 
+source /.venv/bin/activate
 cd "$RUN_DIRECTORY"
 semgrep scan $FURTHER_PARAMETERS --config $CONFIGURATION --quiet --metrics off --no-error --output "$WORKSPACE/$REPORT_NAME" --sarif "$TARGET"
 cd "$WORKSPACE"
+deactivate
 
 if [ "$SO_UPLOAD" == "true" ]; then
   source file_upload_observations.sh

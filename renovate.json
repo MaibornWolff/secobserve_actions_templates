@@ -18,12 +18,18 @@
     },
     "prHourlyLimit": 10,
     "rebaseWhen": "conflicted",
+    "pip_requirements": {
+        "managerFilePatterns": [
+            "/docker/requirements.txt/",
+            "/docker/requirements_checkov.txt/"
+        ]
+    },
     "packageRules": [
         {
             "matchPackageNames": [
                 "python"
             ],
-            "allowedVersions": "<3.13"
+            "allowedVersions": "<3.14"
         },
         {
             "matchPackageNames": [
