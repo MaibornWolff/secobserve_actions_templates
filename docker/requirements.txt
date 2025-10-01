@@ -5,7 +5,7 @@ bandit-sarif-formatter==1.1.1  # https://github.com/microsoft/bandit-sarif-forma
 
 # Semgrep
 # ----------------------------------------------------------------
-semgrep==1.137.0  # https://github.com/returntocorp/semgrep
+semgrep==1.139.0  # https://github.com/returntocorp/semgrep
 
 # CryptoLyzer
 # ----------------------------------------------------------------
