@@ -6,5 +6,5 @@
     GIT_STRATEGY: none
     SO_SUPPRESS_LICENSES: true
   script:
-    - file_upload_observations.sh
+    - /entrypoints/entrypoint_importer.sh
   allow_failure: true

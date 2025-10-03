@@ -5,5 +5,5 @@
   variables:
     GIT_STRATEGY: none
   script:
-    - file_upload_observations.sh
+    - /entrypoints/entrypoint_importer.sh
   allow_failure: true
