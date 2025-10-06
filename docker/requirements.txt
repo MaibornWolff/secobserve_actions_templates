@@ -14,3 +14,7 @@ CryptoLyzer==1.0.0  # https://gitlab.com/coroner/cryptolyzer
 # Importer
 # ----------------------------------------------------------------
 requests==2.32.5  # https://github.com/psf/requests
+
+# Vulnerability Scanner
+# ----------------------------------------------------------------
+PyYAML==6.0.2  # https://github.com/yaml/pyyaml
