@@ -5,5 +5,5 @@
   variables:
     GIT_STRATEGY: none
   script:
-    - file_upload_sbom.sh
+    - /entrypoints/entrypoint_upload_sbom.sh
   allow_failure: true
