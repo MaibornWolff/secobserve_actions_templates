@@ -1,6 +1,6 @@
 .drheader:
   image:
-    name: docker.io/maibornwolff/secobserve-scanners:2025_09
+    name: docker.io/maibornwolff/secobserve-scanners:2025_10
   stage: post_deploy
   variables:
     GIT_STRATEGY: none
