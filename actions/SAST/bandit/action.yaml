@@ -46,7 +46,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://docker.io/maibornwolff/secobserve-scanners:2025_09'
+  image: 'docker://docker.io/maibornwolff/secobserve-scanners:2025_10'
   entrypoint: '/entrypoints/entrypoint_bandit.sh'
   env:
     TARGET: ${{ inputs.target }}
