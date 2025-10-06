@@ -5,4 +5,4 @@
   variables:
     GIT_STRATEGY: none
   script:
-    - /entrypoints/entrypoint_check_security_gate.sh
+    - check_security_gate.sh
